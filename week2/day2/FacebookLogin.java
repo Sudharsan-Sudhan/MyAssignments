@@ -36,5 +36,8 @@ public class FacebookLogin {
 		
 		driver.findElement(By.name("websubmit")).isDisplayed();
 		driver.findElement(By.linkText("Already have an account?")).click();
+		System.out.println("Facebook Login Creation Page Validation Completed Sucessfully");
+		// Closing the browser opened by chromedriver
+		driver.quit();
 	}
 }

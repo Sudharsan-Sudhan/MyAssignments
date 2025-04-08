@@ -25,7 +25,11 @@ public class FacebookForgotLogin {
 		// clicking on forgot password link
 		driver.findElement(By.linkText("Forgotten password?")).click();
 		// validate the title of the window
-		driver.getTitle().contentEquals("Forgotten Password | Can't Log In | Facebook");
+		String title = driver.getTitle();
+		if (title.contains("Forgotten Password"))
+		{
+			System.out.println("Forgotten Password | Can't Log In | Facebook is displayed sucessfully");
+		}
 		// Closing the browser opened by chromedriver
 		driver.quit();
 	}

@@ -75,7 +75,11 @@ public class CreateAccount {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		
 		//	Validating that Account value is displayed as Sudharsan Subramanian
-		driver.findElement(By.xpath("(//span[@class='tabletext'])[3]")).getText().contains("Sudharsan Subramanian");
+		String accountText = driver.findElement(By.xpath("(//span[@class='tabletext'])[3]")).getText();
+		if(accountText.contains("Sudharsan Subramanian"))
+		{
+			System.out.println("Account Created Sucessfully");
+		}
 		
 		// clicking on logout button
 		driver.findElement(By.linkText("Logout")).click();

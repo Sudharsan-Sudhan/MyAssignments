@@ -1,5 +1,8 @@
 package week2.day2;
 
+import java.time.Duration;
+
+import org.jsoup.select.Evaluator.ContainsOwnText;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -44,8 +47,16 @@ public class CreateLead {
 		// clicking on Submit button
 		driver.findElement(By.name("submitButton")).click();
 		//	Validating that Title value is displayed as Mister
-		driver.findElement(By.id("viewLead_generalProfTitle_sp")).getText().contentEquals("Mister");
-		// clicking on logout button
+		String titleText = driver.findElement(By.id("viewLead_generalProfTitle_sp")).getText();
+		if(titleText.contains("Mister"))
+		{
+			System.out.println("Application Created Sucessfully");
+		}
+		// Delecting the Lead cerated now
+		driver.findElement(By.xpath("//a[text()='Delete']")).click();
+		//wait for 30 secs
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		// clicking on logout button		
 		driver.findElement(By.linkText("Logout")).click();
 		// Closing the browser opened by chromedriver
 		driver.quit();
