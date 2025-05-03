@@ -1,5 +1,6 @@
 package testcases;
 
+import java.io.IOException;
 import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,25 +8,16 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class CreateLead extends BaseClass {
+public class CreateLeadUsingExcel extends BaseClass {
 
 	@DataProvider(name="fetchData")
-	public String[][] sendData() {
-		
-		String[][] data = new String [2][3];
-		
-		data[0][0] = "TestLeaf";
-		data[0][1] = "Vineeth";
-		data[0][2] = "Rajendran";
-		
-		data[1][0] = "Qeagle";
-		data[1][1] = "Vinoth";
-		data[1][2] = "Sanmugaraj";
-		
-		return data;
+	public String[][] sendData() throws IOException {
+	
+	String[][] readData = ReadExcel.readData();
+	 return readData;
 	}
 	
-	@Test (dataProvider="fetchData")
+	@Test (dataProvider="fetchData") 
 	public void testCreateLead(String companyName, String firstName, String lastName) {
 		driver.findElement(By.linkText("Create Lead")).click();
 		driver.findElement(By.id("createLeadForm_companyName")).sendKeys(companyName);
