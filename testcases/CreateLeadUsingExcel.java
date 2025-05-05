@@ -5,16 +5,15 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class CreateLeadUsingExcel extends BaseClass {
 
-	@DataProvider(name="fetchData")
-	public String[][] sendData() throws IOException {
-	
-	String[][] readData = ReadExcel.readData();
-	 return readData;
+	@BeforeTest
+	public void setValues() {
+		fileName="CreateLead";
 	}
 	
 	@Test (dataProvider="fetchData") 
