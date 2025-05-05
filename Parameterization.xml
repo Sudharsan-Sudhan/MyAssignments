@@ -7,9 +7,9 @@
 	<parameter name="user" value="DemoSalesManager"></parameter>
 	<parameter name="pass" value="crmsfa"></parameter>		
   <test thread-count="5" name="Test">
-
     <classes>
-      <class name="testcases.CreateLeadUsingExcel"/>
+		<class name="testcases.CreateLeadUsingExcel"/>
+		<class name="testcases.EditLeadUsingExcel"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
