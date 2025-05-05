@@ -1,5 +1,6 @@
 package testcases;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -7,13 +8,15 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 
 public class BaseClass {
 
 	
 	public EdgeDriver driver;
-	
+	public String fileName;
 
 	@Parameters({"url" , "user", "pass"})
 	@BeforeMethod
@@ -34,4 +37,15 @@ public class BaseClass {
 	public void postConditions() {
 		driver.close();
 	}
+	
+	
+	@DataProvider(name="fetchData")
+	public String[][] sendData() throws IOException {
+	
+	String[][] readData = ReadExcel.readData(fileName);
+	 return readData;
+	}
+
+
+	
 }

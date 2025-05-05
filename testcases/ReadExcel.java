@@ -8,10 +8,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ReadExcel {
 
-	public static String[][] readData() throws IOException {
+	public static String[][] readData(String fileName) throws IOException {
 		
 		//To open the workbook
-		XSSFWorkbook wb=new XSSFWorkbook("D:\\TestLeaf\\Automation Workspace\\Selenium\\Data\\CreateLead.xlsx");
+		XSSFWorkbook wb=new XSSFWorkbook("./Data/"+fileName+".xlsx");
 		
         //Locate the worksheet
 		XSSFSheet ws = wb.getSheet("Sheet1");
